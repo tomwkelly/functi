@@ -15,3 +15,10 @@ export function pipe<TInitial>(initial: TInitial) {
     },
   };
 }
+
+export function mapObject<T>(
+  array: string[],
+  callbackfn: (value: string, index: number, array: string[]) => [string, T]
+) {
+  return Object.fromEntries(array.map(callbackfn));
+}
