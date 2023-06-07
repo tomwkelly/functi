@@ -34,3 +34,7 @@ export function orDefaultArray(input: any[] | undefined) {
 export function orDefaultString(input: string | undefined) {
   return orDefault(input, "");
 }
+
+export function tryParseJSON(input: string | undefined) {
+  return input ? JSON.parse(input) : undefined;
+}

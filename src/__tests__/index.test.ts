@@ -4,6 +4,7 @@ import {
   orDefaultArray,
   orDefaultString,
   pipe,
+  tryParseJSON,
 } from "../index";
 
 test("Pipe function", () => {
@@ -48,4 +49,15 @@ test("orDefaultArray function returns default", () => {
 test("orDefaultArray function returns input", () => {
   const a: string[] | undefined = ["x"];
   expect(orDefaultArray(a)).toStrictEqual(["x"]);
+});
+
+test("tryParseJSON function returns parsed object", () => {
+  const a = { a: "a", b: "b" };
+  const b: string | undefined = JSON.stringify(a);
+  expect(tryParseJSON(b)).toStrictEqual(a);
+});
+
+test("tryParseJSON function returns undefined", () => {
+  const b: string | undefined = undefined;
+  expect(tryParseJSON(b)).toBe(undefined);
 });
