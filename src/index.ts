@@ -22,3 +22,7 @@ export function mapObject<T>(
 ) {
   return Object.fromEntries(array.map(callbackfn));
 }
+
+export function orDefault<T>(input: T | undefined, defaultValue: T): T {
+  return !!input ? input : defaultValue;
+}

@@ -1,4 +1,4 @@
-import { mapObject, pipe } from "../index";
+import { mapObject, orDefault, pipe } from "../index";
 
 test("Pipe function", () => {
   const sum = (a: number, b: number) => a + b;
@@ -14,4 +14,14 @@ test("mapObject function", () => {
   const o: { [key: string]: string } = { a: "x", b: "y", c: "z", d: "none" };
   const x = mapObject(a, (i) => [i, o[i]]);
   expect(x).toStrictEqual({ a: "x", b: "y", c: "z" });
+});
+
+test("orDefault function returns default", () => {
+  const a: string | undefined = undefined;
+  expect(orDefault<string>(a, "test")).toBe("test");
+});
+
+test("orDefault function returns input", () => {
+  const a: string | undefined = "x";
+  expect(orDefault<string>(a, "test")).toBe("x");
 });
