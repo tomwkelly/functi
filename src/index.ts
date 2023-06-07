@@ -26,3 +26,11 @@ export function mapObject<T>(
 export function orDefault<T>(input: T | undefined, defaultValue: T): T {
   return !!input ? input : defaultValue;
 }
+
+export function orDefaultArray(input: any[] | undefined) {
+  return orDefault(input, []);
+}
+
+export function orDefaultString(input: string | undefined) {
+  return orDefault(input, "");
+}
